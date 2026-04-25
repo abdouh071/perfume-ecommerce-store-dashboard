@@ -10,9 +10,18 @@ L'Essence is a premium, fully-localized e-commerce platform specifically tailore
 
 ### 🛍️ Premium Customer Experience
 - **"Liquid Glass" UI/UX:** A modern, high-end design featuring glassmorphism, smooth animations, and a dynamic Ken Burns hero carousel.
+- Sample : ![Home Page](public/assets/images/IMG_2918.png)
+- ![Home Page](public/assets/images/IMG_2919.png)
+- ![Home Page](public/assets/images/IMG_2921.png)
+- ![Home Page](public/assets/images/IMG_2922.png)
+- ![Shop Page](public/assets/images/IMG_2923.png)
+
+- 
 - **Multi-Language Support:** Fully localized interface with seamless switching between English, French, and Arabic (RTL support).
 - **Smart Checkout:** Automatically calculates shipping rates based on the customer's Wilaya and dynamically pulls available StopDesk pickup points.
 - **Order Tracking:** Customers can track their orders in real-time.
+- - ![Profile](public/assets/images/IMG_2924.png)
+
 
 ### 🛡️ Secure Backend Architecture
 - **Firebase Cloud Functions Proxy:** All shipping API requests (creating orders, fetching rates, getting labels) are proxied through server-side Cloud Functions. This entirely hides sensitive API keys from the frontend and completely prevents CORS errors.
@@ -24,6 +33,19 @@ L'Essence is a premium, fully-localized e-commerce platform specifically tailore
 - **Order Processing:** Admins can view orders, print official courier shipping labels, and dispatch orders to couriers with a single click.
 - **Dynamic Content Control:** Admins can customize the Hero Carousel, curated categories, and featured products directly from the UI without touching code.
 - **Shipping Configuration:** Easily switch between different Algerian couriers and sync live shipping rates directly into the database.
+
+- ##Dashboard Sample :
+
+- - ![Dashboard](public/assets/images/IMG_2925.png)
+- ![Dashboard Orders](public/assets/images/IMG_2926.png)
+- ![Dashboard Menu](public/assets/images/IMG_2928.png)
+- ![Dashboard Team Management ](public/assets/images/IMG_2929.png)
+
+- ![Store Settings](public/assets/images/IMG_2930.png)
+- ![Store Settings](public/assets/images/IMG_2931.png)
+
+
+
 
 ## 🛠️ Technology Stack
 
