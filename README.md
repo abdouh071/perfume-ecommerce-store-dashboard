@@ -1,6 +1,6 @@
 # 💎 L'Essence — Luxury Perfumes E-Commerce 🌟
 
-L'Essence Banner
+L'Essence Banner : ![L'Essence Banner](https://com2-65de5.web.app/assets/images/image_0.webp)
 
 🌐 Live Demo: https://com2-65de5.web.app
 
