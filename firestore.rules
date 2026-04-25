@@ -1,0 +1,181 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ── Helper functions ──────────────────────────────────────────────────────
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    
+    function hasRole(role) {
+      return isSignedIn() && getUserData().role == role;
+    }
+    
+    function isAdmin()     { return hasRole('admin'); }
+    function isManager()   { return hasRole('manager'); }
+    function isConfirmer() { return hasRole('confirmer'); }
+
+    function isStaff() {
+      return isAdmin() || isManager() || isConfirmer();
+    }
+
+    // ── Order validation ──────────────────────────────────────────────────────
+    // Validates that a new order payload is well-formed.
+    // This prevents bots from writing empty, manipulated, or spam records.
+
+    function isValidOrderPayload() {
+      let data = request.resource.data;
+      return
+        // Must have a real customer name (at least 2 chars)
+        data.customer is string && data.customer.size() >= 2 &&
+
+        // Must have a phone number embedded in shipping object OR top-level
+        (
+          (data.keys().hasAll(['shipping']) &&
+           data.shipping is map &&
+           data.shipping.keys().hasAny(['phone']) &&
+           data.shipping.phone is string &&
+           data.shipping.phone.size() >= 8)
+          ||
+          (data.keys().hasAny(['phone']) &&
+           data.phone is string &&
+           data.phone.size() >= 8)
+        ) &&
+
+        // Must have at least one item
+        data.items is list && data.items.size() > 0 &&
+
+        // Status on creation must always be 'Pending' — staff set it later
+        data.status == 'Pending' &&
+
+        // If the order claims to belong to an authenticated user,
+        // the userId must match the actual signed-in user's UID.
+        (
+          !data.keys().hasAny(['userId']) ||
+          data.userId == null ||
+          (isSignedIn() && data.userId == request.auth.uid)
+        );
+    }
+
+    // Validates an incomplete order payload (less strict — fewer fields required)
+    function isValidIncompleteOrderPayload() {
+      let data = request.resource.data;
+      return
+        // Must have at least a name OR a phone — blank spam not allowed
+        (
+          (data.keys().hasAny(['customer']) && data.customer is string && data.customer.size() >= 2) ||
+          (data.keys().hasAny(['phone'])    && data.phone    is string && data.phone.size() >= 8)
+        ) &&
+
+        // If userId is set, it must match the authenticated user
+        (
+          !data.keys().hasAny(['userId']) ||
+          data.userId == null ||
+          (isSignedIn() && data.userId == request.auth.uid)
+        );
+    }
+
+
+    // ── Collections ───────────────────────────────────────────────────────────
+
+    // Users: can read/write own profile. Staff can read all. Only admin changes roles.
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isStaff());
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update: if isSignedIn() && (
+        (request.auth.uid == userId && (request.resource.data.role == resource.data.role)) || 
+        isAdmin()
+      );
+    }
+
+    // Products: Anyone can read. Only Admin/Manager can write.
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin() || isManager();
+    }
+
+    // Orders: Validated guest/user creation. Staff can update/delete.
+    match /orders/{orderId} {
+      allow read: if isSignedIn() && (
+        resource.data.userId == request.auth.uid || 
+        resource.data.email == request.auth.token.email ||
+        isStaff()
+      );
+      // Anyone may create an order, but the payload must be valid.
+      allow create: if isValidOrderPayload();
+      allow update, delete: if isStaff();
+    }
+
+    // Incomplete Orders: Validated creation. Staff or owner can read/update.
+    match /incomplete-orders/{orderId} {
+      allow read, update, delete: if isStaff() || (isSignedIn() && request.auth.uid == resource.data.userId);
+      allow create: if isValidIncompleteOrderPayload();
+    }
+
+    // Settings: Public can read store settings, but only Admin/Manager for others.
+    match /settings/{settingId} {
+      allow read: if settingId == 'store' || isAdmin() || isManager();
+      allow write: if isAdmin() || isManager();
+    }
+
+    // Messages & Subscribers: Public can create, only Staff can read/delete.
+    match /messages/{msgId} {
+      allow create: if true;
+      allow read, delete: if isStaff();
+    }
+    
+    match /subscribers/{subId} {
+      allow create: if true;
+      allow read, delete: if isStaff();
+    }
+
+    // Reviews: Public can create (with validated payload). Only Staff can read all / update / delete.
+    // Customers can only read approved reviews (via the service query filter).
+    match /reviews/{reviewId} {
+      // Anyone may read — the client filters by status == 'approved'
+      allow read: if true;
+
+      // Public creation: payload must be well-formed to prevent spam injection
+      allow create: if
+        // author must be a real name
+        request.resource.data.author is string &&
+        request.resource.data.author.size() >= 2 &&
+        request.resource.data.author.size() <= 80 &&
+
+        // title must be present and reasonable
+        request.resource.data.title is string &&
+        request.resource.data.title.size() >= 2 &&
+        request.resource.data.title.size() <= 120 &&
+
+        // body must have real content
+        request.resource.data.body is string &&
+        request.resource.data.body.size() >= 10 &&
+        request.resource.data.body.size() <= 2000 &&
+
+        // rating must be an integer 1–5
+        request.resource.data.rating is int &&
+        request.resource.data.rating >= 1 &&
+        request.resource.data.rating <= 5 &&
+
+        // productId must be set
+        request.resource.data.productId is string &&
+        request.resource.data.productId.size() > 0 &&
+
+        // Status must always start as 'pending' — admin approves later
+        request.resource.data.status == 'pending';
+
+      // Only staff can update (approve/reject) or delete reviews
+      allow update, delete: if isStaff();
+    }
+
+    // Default: deny everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

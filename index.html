@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>L'Essence — Luxury Fragrances Algeria</title>
+    <meta name="description" content="Discover L'Essence — Algeria's premier luxury fragrance boutique. Explore exquisite perfumes from heritage houses and modern artisans. Fast delivery across all wilayas." />
+    <meta name="keywords" content="parfum algérie, luxury perfume algeria, عطور الجزائر, fragrance boutique, L'Essence" />
+    <meta name="author" content="L'Essence" />
+    <meta name="theme-color" content="#f9f9fb" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="L'Essence" />
+    <meta property="og:title" content="L'Essence — Luxury Fragrances Algeria" />
+    <meta property="og:description" content="Algeria's premier luxury fragrance boutique. Exquisite perfumes delivered to your door." />
+    <meta property="og:image" content="https://com2-65de5.web.app/assets/images/image_0.webp" />
+    <meta property="og:locale" content="en_DZ" />
+    <meta property="og:locale:alternate" content="ar_DZ" />
+    <meta property="og:locale:alternate" content="fr_DZ" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="L'Essence — Luxury Fragrances Algeria" />
+    <meta name="twitter:description" content="Algeria's premier luxury fragrance boutique. Exquisite perfumes delivered to your door." />
+    <meta name="twitter:image" content="https://com2-65de5.web.app/assets/images/image_0.webp" />
+
+    <!-- Fonts (single load each) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root">
+      <style>
+        .initial-loader {
+          position: fixed;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: #F9F9F7;
+          z-index: 9999;
+          font-family: 'Noto Serif', serif;
+        }
+        .spinner-ring {
+          width: 64px;
+          height: 64px;
+          border: 1px solid rgba(130, 106, 17, 0.1);
+          border-top: 1px solid #826a11;
+          border-radius: 50%;
+          animation: spin 2s linear infinite;
+        }
+        .spinner-pulse {
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          background: rgba(130, 106, 17, 0.05);
+          border-radius: 50%;
+          animation: pulse 2s ease-in-out infinite;
+        }
+        .spinner-dot {
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          background: #826a11;
+          border-radius: 50%;
+          box-shadow: 0 0 10px rgba(130, 106, 17, 0.5);
+        }
+        .brand-text {
+          margin-top: 24px;
+          font-size: 20px;
+          letter-spacing: 0.2em;
+          color: #1a1c1d;
+          text-transform: uppercase;
+          opacity: 0.8;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.3; } 50% { transform: scale(1.2); opacity: 0.6; } }
+      </style>
+      <div class="initial-loader">
+        <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+          <div class="spinner-ring"></div>
+          <div class="spinner-pulse"></div>
+          <div class="spinner-dot"></div>
+        </div>
+        <div class="brand-text">L'Essence</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

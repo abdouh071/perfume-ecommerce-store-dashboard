@@ -1,0 +1,26 @@
+# L'Essence — robots.txt
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+
+# Allow all public pages
+Allow: /
+Allow: /shop
+Allow: /product/
+Allow: /categories
+Allow: /about
+Allow: /contact
+Allow: /track-order
+
+# Block private / staff-only routes
+Disallow: /admin
+Disallow: /profile
+Disallow: /checkout
+Disallow: /wishlist
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+
+# Sitemap location
+# TODO: Replace YOUR_DOMAIN with your actual deployed domain (e.g. lessence.dz)
+Sitemap: https://com2-65de5.web.app/sitemap.xml

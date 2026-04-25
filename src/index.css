@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --glass-shimmer: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.2) 100%);
+  }
+  
+  html, body {
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-surface font-body text-on-surface antialiased;
+  }
+}
+
+@layer components {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+    background-image: var(--glass-shimmer);
+  }
+
+  .scent-shadow {
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05),
+                0 10px 20px -5px rgba(0, 0, 0, 0.02);
+  }
+
+  .shimmer-border {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,255,255,0.5), transparent, rgba(255,255,255,0.2)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+  }
+
+  .brushed-metal-cta {
+    background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+    position: relative;
+    overflow: hidden;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      transition: 0.8s;
+    }
+    &:hover::before {
+      left: 100%;
+    }
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.boutique-swiper .swiper-slide {
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.boutique-swiper .swiper-slide-active {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ── Hero Ken Burns Carousel ── */
+@keyframes kenBurnsZoom {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-slide.active {
+  opacity: 1;
+  animation: kenBurnsZoom 7s ease-out forwards;
+}

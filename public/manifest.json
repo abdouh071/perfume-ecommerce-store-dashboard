@@ -1,0 +1,18 @@
+{
+  "name": "L'Essence",
+  "short_name": "L'Essence",
+  "description": "Algeria's premier luxury fragrance boutique.",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#1a1c1d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  L'Essence — sitemap.xml
+  TODO: Replace every instance of com2-65de5.web.app with your actual deployed domain
+        e.g. https://lessence.dz
+
+  Static routes are listed here.
+  For product pages, re-generate this file (or use a build-time script)
+  once your product catalog is stable, adding one <url> per product:
+
+    <url>
+      <loc>https://com2-65de5.web.app/product/PRODUCT_ID</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+    </url>
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
+  <url>
+    <loc>https://com2-65de5.web.app/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <!-- Alternate language versions -->
+    <xhtml:link rel="alternate" hreflang="fr" href="https://com2-65de5.web.app/?lng=fr"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://com2-65de5.web.app/?lng=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://com2-65de5.web.app/?lng=en"/>
+  </url>
+
+  <!-- Shop / All Products -->
+  <url>
+    <loc>https://com2-65de5.web.app/shop</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Categories -->
+  <url>
+    <loc>https://com2-65de5.web.app/categories</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About Us -->
+  <url>
+    <loc>https://com2-65de5.web.app/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Contact Us -->
+  <url>
+    <loc>https://com2-65de5.web.app/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Track Order -->
+  <url>
+    <loc>https://com2-65de5.web.app/track-order</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!--
+    PRODUCT PAGES — add one block per product below.
+    Replace PRODUCT_ID with the Firestore document ID.
+    Example:
+
+  <url>
+    <loc>https://com2-65de5.web.app/product/prod_1775432605096</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://com2-65de5.web.app/product/prod_1775434133809</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://com2-65de5.web.app/product/prod_1775435537679</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

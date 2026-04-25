@@ -1,0 +1,12 @@
+{
+  "name": "perfume-store-webhooks",
+  "description": "Firebase Cloud Functions for L'Essence shipping webhooks",
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^4.5.0"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js"
+}
