@@ -1,10 +1,10 @@
-L'Essence — Luxury Fragrance E-Commerce 🌟
+L'Essence — Luxury Perfumes E-Commerce 🌟
 
 ![L'Essence Banner](https://com2-65de5.web.app/assets/images/image_0.webp)
 
 **Live Demo:** [https://com2-65de5.web.app](https://com2-65de5.web.app)
 
-L'Essence is a premium, fully-localized e-commerce platform specifically tailored for the Algerian luxury fragrance market. Built with modern web technologies, it features a sophisticated "Liquid Glass" design aesthetic, a comprehensive administration dashboard, and a highly secure integration with local delivery couriers (Yalidine, Maystro, Ecotrack, etc.).
+L'Essence is a premium, fully-localized e-commerce platform specifically tailored for the Algerian luxury Perfumes market. Built with modern web technologies, it features a sophisticated "Liquid Glass" design aesthetic, a comprehensive administration dashboard, and a highly secure integration with local delivery couriers (Yalidine, Maystro, Ecotrack, etc.).
 
 ## ✨ Key Features
 
