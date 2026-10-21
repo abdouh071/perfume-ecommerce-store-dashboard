@@ -1,250 +1,154 @@
-L'Essence --- Luxury Perfumes E-Commerce 🌟
+L'Essence — Luxury Perfumes E-Commerce 🌟
 
-if you find it helpful don't forget to 🌟 
-
-
-L'Essence
-
-Banner
-
+L'Essence Banner
 
 Live Demo: https://com2-65de5.web.app
 
-
-L'Essence is a premium, fully localized e-commerce platform tailored for
-the Algerian luxury perfume market. Built with modern web technologies,
-it features a sophisticated Liquid Glass-inspired design, a
-comprehensive administration dashboard, and integrations with local
-delivery providers such as Yalidine, Maystro, and Ecotrack.
-
+L'Essence is a premium, fully-localized e-commerce platform specifically tailored for the Algerian luxury Perfumes market. Built with modern web technologies, it features a sophisticated "Liquid Glass" design aesthetic, a comprehensive administration dashboard, and a highly secure integration with local delivery couriers (Yalidine, Maystro, Ecotrack, etc.).
 
 ✨ Key Features
 
 🛍️ Premium Customer Experience
 
+- "Liquid Glass" UI/UX: A modern, high-end design featuring glassmorphism, smooth animations, and a dynamic Ken Burns hero carousel.
 
-Liquid Glass UI/UX: A modern design featuring glassmorphism, smooth animations, and a dynamic Ken Burns hero carousel.
+- Sample : Home Page
 
-Multilingual Support: English, French, and Arabic, including right-to-left (RTL) support.
+- Home Page
 
-Smart Checkout: Calculates shipping rates based on the customer's Wilaya.
+- Home Page
 
-StopDesk Pickup Points: Retrieves available pickup points dynamically where supported.
+- Home Page
 
-Order Tracking: Customers can track their orders.
+- Shop Page
 
-Responsive Design: A modern shopping interface for different screen sizes.
+- 
 
+- Multi-Language Support: Fully localized interface with seamless switching between English, French, and Arabic (RTL support).
 
-🖼️ Storefront Screenshots
+- Smart Checkout: Automatically calculates shipping rates based on the customer's Wilaya and dynamically pulls available StopDesk pickup points.
 
-Home Page
+- Order Tracking: Customers can track their orders in real-time.
 
-
-Home Page
-
-
-Home Page
-
-
-Home Page
-
-
-Shop Page
-
-
-Customer Profile
-
+- - Profile
 
 🛡️ Secure Backend Architecture
 
-
-Firebase Cloud Functions Proxy: Shipping API requests are routed through server-side Cloud Functions to help keep private courier API credentials out of frontend code and avoid browser CORS issues.
-
-Automated Webhooks: Processes courier webhooks to update order statuses where supported.
-
-Cloud Database & Authentication: Uses Firebase Firestore for application data and Firebase Authentication for user accounts.
-
+- Firebase Cloud Functions Proxy: All shipping API requests (creating orders, fetching rates, getting labels) are proxied through server-side Cloud Functions. This entirely hides sensitive API keys from the frontend and completely prevents CORS errors.
+- Automated Webhooks: Listens to silent POST webhooks from couriers to automatically update order statuses (e.g., from "Shipped" to "Delivered") in the database.
+- Cloud Database & Auth: Utilizes Firebase Firestore for real-time data sync and Firebase Auth for secure user accounts.
 
 📊 Powerful Admin Dashboard
 
+- Product Management: Full CRUD capabilities for fragrances, including stock, pricing, fragrance notes, and ImgBB image uploads.
 
-Product Management: Create, update, and delete fragrances, including stock, pricing, fragrance notes, and images.
+- Order Processing: Admins can view orders, print official courier shipping labels, and dispatch orders to couriers with a single click.
 
-Order Processing: View orders, print courier shipping labels, and dispatch orders to supported couriers.
+- Dynamic Content Control: Admins can customize the Hero Carousel, curated categories, and featured products directly from the UI without touching code.
 
-Dynamic Content Control: Customize the hero carousel, categories, and featured products from the dashboard.
+- Shipping Configuration: Easily switch between different Algerian couriers and sync live shipping rates directly into the database.
 
-Shipping Configuration: Configure supported Algerian couriers and synchronize shipping rates.
+- ##Dashboard Sample :
 
-Team Management: Includes team-related administration features.
+- - Dashboard
 
+- Dashboard Orders
 
-📸 Dashboard Screenshots
+- Dashboard Menu
 
-Dashboard
+- Dashboard Team Management 
 
+- Store Settings
 
-Dashboard Orders
-
-
-Dashboard Menu
-
-
-Dashboard Team Management
-
-
-Store Settings
-
-
-Store Settings
-
+- Store Settings
 
 🛠️ Technology Stack
 
-
-Frontend: React.js, Vite, Tailwind CSS
-
-State Management: React Context API
-
-Backend/BaaS: Firebase Authentication, Firestore, Cloud Functions, and Hosting
-
-Image Hosting: ImgBB API
-
-Animations: Framer Motion
-
-Icons: Lucide React and Google Material Symbols
-
+- Frontend: React.js, Vite, TailwindCSS
+- State Management: React Context API
+- Backend/BaaS: Firebase (Auth, Firestore, Cloud Functions, Hosting)
+- Image Hosting: ImgBB API
+- Animations: Framer Motion
+- Icons: Lucide React & Google Material Symbols
 
 🚀 Getting Started
 
 Prerequisites
 
+- Node.js (v18+)
+- Firebase CLI (npm install -g firebase-tools)
+- A Firebase Project (with Firestore and Auth enabled)
 
-Node.js and npm
+Installation
 
-Git
+1. Clone the repository:
 
-A Firebase project with the services required by the application
+   git clone https://github.com/yourusername/lessence-luxury-perfumes.git  
+   cd lessence-luxury-perfumes
 
-Firebase CLI (for deploying Cloud Functions)
+2. Install dependencies:
 
+   npm install
 
-1. Clone the Repository
+3. Set up environment variables:
+   Create a .env file in the root directory and add your Firebase and ImgBB credentials:
 
-git clone https://github.com/abdouh071/perfume-ecommerce-store-dashboard.git
-cd perfume-ecommerce-store-dashboard
+   VITE_FIREBASE_API_KEY=your_api_key  
+   VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain  
+   VITE_FIREBASE_PROJECT_ID=your_project_id  
+   VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket  
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id  
+   VITE_FIREBASE_APP_ID=your_app_id  
+   VITE_IMGBB_API_KEY=your_imgbb_api_key
 
-2. Install Dependencies
+4. Run the development server:
 
-npm install
+   npm run dev
 
-3. Configure Environment Variables
+Deploying Cloud Functions
 
-Create a .env file in the project root. The following names are
-examples based on the project's configuration and should be checked
-against the source code:
+To ensure the shipping API proxy works securely:
 
-
-VITE_FIREBASE_API_KEY=your_firebase_api_key
-VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
-VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
-VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
-VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
-VITE_FIREBASE_APP_ID=your_firebase_app_id
-VITE_IMGBB_API_KEY=your_imgbb_api_key
-
-Important: - Verify that the environment variable names match those
-used by the application. - Variables prefixed with VITE_ are exposed
-in the frontend bundle. Do not put private courier API tokens or other
-server-only secrets in them. - Configure your own Firebase Security
-Rules and authorization before deployment.
-
-
-4. Run the Development Server
-
-npm run dev
-
-Open the local URL printed by Vite in your terminal.
-
-
-5. Deploy Cloud Functions
-
-If your project uses the cloud-functions-source directory for shipping
-integrations:
-
-
-cd cloud-functions-source
-npm install
-firebase login
-firebase use --add
+cd cloud-functions-source  
+npm install  
 firebase deploy --only functions
-
-Configure the required server-side environment values and courier
-credentials before deployment. Firebase deployment requirements and
-billing depend on the services used.
-
-
-🔐 Security Notes
-
-Before deploying your own instance:
-
-
-
-Configure Firestore Security Rules.
-
-Restrict administrative operations to authorized users.
-
-Keep private courier credentials on the server.
-
-Validate incoming orders and webhook requests.
-
-Test checkout, shipping calculations, order creation, and tracking.
-
-
-🤝 Contributing
-
-Contributions, bug reports, and feature suggestions are welcome.
-
-
-
-Fork the repository.
-
-Create a branch for your changes.
-
-Commit your changes.
-
-Open a pull request describing your contribution.
-
-
-Report an
-issue.
-
 
 📄 License
 
-This project is licensed under the MIT License. You may use, modify,
-distribute, reuse, and sell this software, including for commercial
-purposes, subject to the conditions in the LICENSE file.
+This project is available for:
+
+✔ Personal use
+✔ Learning and educational purposes
+✔ Modification and customization
+✔ Use in personal or client projects
+
+You are allowed to:
+
+- Use the code freely
+- Modify it
+- Build your own version for your own business
+
+You are NOT allowed to:
+
+- Resell or redistribute this project as a template or product
+
+- Claim the original work as your own
+
+- Re-upload it as a competing commercial starter kit
+
+- 📬 Contact
+
+- Email: hichourabdelhak1@gmail.com
+
+- GitHub: https://github.com/abdouh071
 
 
-👨‍💻 Author
+---
 
-Abdelhak Hichour
+- ⭐ Final Note
 
+This project represents a practical implementation of a real-world e-commerce system focused on usability, performance, and scalability.
 
+If you found it useful, feel free to ⭐ the repository
 
-GitHub: @abdouh071
-
-Email: hichourabdelhak1@gmail.com
-
-
-⭐ Support the Project
-
-If you find L'Essence useful, consider giving the repository a ⭐ on
-GitHub. It helps other developers discover the project.
-
-
-
-Built with ❤️ for the Algerian e-commerce ecosystem.
-
+© 2026 L'Essence — All rights reserved
