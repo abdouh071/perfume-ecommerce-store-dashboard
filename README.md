@@ -1,4 +1,5 @@
 L'Essence — Luxury Perfume E-Commerce 🌟
+if you find it useful don't forget to give 🌟 
 
 ![L'Essence Banner](https://com2-65de5.web.app/assets/images/image_0.webp)
 
@@ -75,17 +76,17 @@ Designed around the needs of Algerian e-commerce businesses.
 
 📸 Dashboard Screenshots
 
-"Dashboard" (public/assets/images/IMG_2925.png)
+![Dashboard](./public/assets/images/IMG_2925.png)
 
-"Dashboard Orders" (public/assets/images/IMG_2926.png)
+![Dashboard Orders](./public/assets/images/IMG_2926.png)
 
-"Dashboard Menu" (public/assets/images/IMG_2928.png)
+![Dashboard Menu](./public/assets/images/IMG_2928.png)
 
-"Dashboard Team Management" (public/assets/images/IMG_2929.png)
+![Dashboard Team Management](./public/assets/images/IMG_2929.png)
 
-"Store Settings" (public/assets/images/IMG_2930.png)
+![Store Settings](./public/assets/images/IMG_2930.png)
 
-"Store Settings" (public/assets/images/IMG_2931.png)
+![Store Settings](./public/assets/images/IMG_2931.png)
 
 🛠️ Technology Stack
 
@@ -180,7 +181,8 @@ firebase deploy --only functions
 
 Deployment requirements and billing depend on the Firebase services and features you use.
 
-For additional information, see the "Firebase documentation" (https://firebase.google.com/docs).
+For additional information, see the
+![Firebase documentation](https://firebase.google.com/docs).
 
 🔐 Production Checklist
 
